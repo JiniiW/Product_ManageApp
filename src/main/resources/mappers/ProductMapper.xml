@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.ssg.todospring.mapper.TodoMapper">
+<mapper namespace="com.mvc.pmapp.mapper.ProductMapper">
+    <insert id="insert">
+        INSERT INTO mvc_product(name, price, stock_quantity) VALUES (#{name}, #{price}, #{stock_quantity})
+    </insert>
 
+    <select id="selectAll" resultType="com.mvc.pmapp.domain.ProductVO">
+        SELECT * FROM mvc_product ORDER BY id DESC
+    </select>
+
+    <select id="selectOne" resultType="com.mvc.pmapp.domain.ProductVO">
+        SELECT * FROM mvc_product WHERE id = #{id}
+    </select>
+    
+    <update id="update">
+        UPDATE mvc_product SET name = #{name}, price = #{price}, stock_quantity = #{stock_quantity} WHERE id = #{id}
+    </update>
+
+    <delete id="delete">
+        DELETE FROM mvc_product WHERE id = #{id}
+    </delete>
 </mapper>
