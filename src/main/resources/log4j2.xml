@@ -9,7 +9,7 @@
         <Logger name="org.springframework" level="INFO" additivity="false">
             <AppenderRef ref = "Console" />
         </Logger>
-        <Logger name="com.ssg" level="TRACE" additivity="false">
+        <Logger name="com.mvc" level="TRACE" additivity="false">
             <AppenderRef ref = "Console" />
         </Logger>
         <Root level="INFO">
