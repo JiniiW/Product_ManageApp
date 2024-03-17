@@ -77,7 +77,7 @@
     <input type="number" id="stockQuantity" name="stock_quantity" min="0" max="99999" placeholder="재고 수량" required><br>
 
     <button type="reset">초기화</button>
-    <button type="submit">상품 등량</button>
+    <button type="submit">상품 등록</button>
 </form>
 </body>
 </html>
