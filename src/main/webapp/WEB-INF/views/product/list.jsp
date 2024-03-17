@@ -27,9 +27,10 @@
         }
 
         table {
-            width: 80%;
+            width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
+            table-layout: fixed;
         }
 
         th, td {
@@ -48,7 +49,7 @@
         }
 
         button {
-            padding: 10px;
+            padding: 5px 15px;
             background-color: #007bff;
             color: #fff;
             border: none;
@@ -61,10 +62,62 @@
             text-decoration: none;
             color: #007bff;
         }
+
+        input {
+            box-sizing: border-box;
+            border: none;
+            border-bottom: 2px solid #007bff;
+            outline: none;
+            margin-top: 10px;
+            margin-left: 15px;
+            background-color: #f4f4f4;
+        }
+
+        #pageTitle {
+            cursor: pointer;
+        }
+        #pageTitle:hover {
+            color: black;
+        }
+
+        .scrollable-table {
+            max-height: 500px;
+            max-width: 80%;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .scrollable-table table {
+            width: 100%;
+            table-layout: fixed;
+        }
+
+        /* thead */
+        .scrollable-table thead {
+            position: sticky;
+            top: 0;
+            background-color: white;
+            z-index: 1;
+        }
+
     </style>
 </head>
 <body>
-<h1>Product List</h1>
+<h1 id="pageTitle">Product List</h1>
+
+<script>
+    document.getElementById("pageTitle").addEventListener("click", function() {
+        window.location.href = "/product/list";
+    });
+</script>
+
+<form action="/product/search" method="get">
+    <label for="searchString">상품 이름</label>
+    <input type="text" id="searchString" name="searchString" required>
+    <button type="submit">검색</button>
+</form>
+
+<div class="scrollable-table">
 <table>
     <thead>
     <tr>
@@ -73,12 +126,13 @@
         <th>상품 가격</th>
         <th>재고 수량</th>
         <th>수정</th>
-        <th>삭록</th>
+        <th>삭제</th>
     </tr>
     </thead>
     <tbody>
     <c:forEach var="dtoList" items="${dtoList}">
         <tr>
+
             <td>${dtoList.id}</td>
             <td>${dtoList.name}</td>
             <td>${dtoList.price}</td>
@@ -89,7 +143,7 @@
     </c:forEach>
     </tbody>
 </table>
-
+</div>
 <button onclick="location.href='/product/add'">상품 등록</button>
 </body>
 </html>

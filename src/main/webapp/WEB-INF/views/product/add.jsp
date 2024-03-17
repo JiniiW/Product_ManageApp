@@ -69,13 +69,11 @@
 <body>
 <h2>Add Product</h2>
 <form action="/product/add" method="post">
-<%--    <label for="name">Product Name:</label><br>--%>
+
     <input type="text" id="name" name="name" required placeholder="상품 이름"><br>
 
-<%--    <label for="price">Price:</label><br>--%>
     <input type="number" id="price" name="price" min="0" max="1000000" placeholder="상품 가격" required><br>
 
-<%--    <label for="stockQuantity">Stock Quantity:</label><br>--%>
     <input type="number" id="stockQuantity" name="stock_quantity" min="0" max="99999" placeholder="재고 수량" required><br>
 
     <button type="reset">초기화</button>

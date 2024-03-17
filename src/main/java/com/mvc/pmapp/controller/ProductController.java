@@ -10,9 +10,11 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Log4j2
 @Controller
@@ -81,5 +83,11 @@ public class ProductController {
         return "redirect:/product/list";
     }
 
-
+    @GetMapping("/search")
+    public String search(@RequestParam("searchString") String searchString, Model model) {
+        log.info("get search()");
+        List<ProductDTO> searchResults = productService.searchByName(searchString);
+        model.addAttribute("dtoList", searchResults);
+        return "/product/list";
+    }
 }

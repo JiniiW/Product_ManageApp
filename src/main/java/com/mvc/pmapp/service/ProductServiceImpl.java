@@ -56,4 +56,13 @@ public class ProductServiceImpl implements ProductService{
         productMapper.delete(tno);
         log.info(tno);
     }
+
+    @Override
+    public List<ProductDTO> searchByName(String searchString) {
+        List<ProductDTO> dtoList = productMapper.searchByName(searchString).stream()
+                .map(vo -> modelMapper.map(vo, ProductDTO.class))
+                .collect(Collectors.toList());
+
+        return dtoList;
+    }
 }

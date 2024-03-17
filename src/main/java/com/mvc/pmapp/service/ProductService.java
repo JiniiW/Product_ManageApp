@@ -14,4 +14,6 @@ public interface ProductService {
     void modify(ProductDTO productDTO);
 
     void remove(Integer tno);
+
+    List<ProductDTO> searchByName(String searchString);
 }

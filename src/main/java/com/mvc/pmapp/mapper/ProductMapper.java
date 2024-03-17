@@ -15,4 +15,6 @@ public interface ProductMapper {
     void update(ProductVO productVO);
 
     void delete(Integer id);
+
+    List<ProductVO> searchByName(String searchString);
 }

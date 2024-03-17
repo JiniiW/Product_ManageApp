@@ -21,4 +21,9 @@
     <delete id="delete">
         DELETE FROM mvc_product WHERE id = #{id}
     </delete>
+
+    <select id="searchByName" resultType="com.mvc.pmapp.domain.ProductVO">
+        SELECT * FROM mvc_product WHERE name LIKE CONCAT('%', #{searchString}, '%')
+    </select>
+
 </mapper>
